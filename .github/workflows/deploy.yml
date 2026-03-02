@@ -1,39 +1,31 @@
 name: Deploy Jukeboxia to GitHub Pages
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 10
-
       - name: Install dependencies
         run: pnpm install
-
       - name: Build
         run: pnpm build
         env:
@@ -41,15 +33,14 @@ jobs:
           VITE_ANALYTICS_WEBSITE_ID: ""
           VITE_APP_ID: "jukeboxia"
           VITE_APP_TITLE: "Jukeboxia"
-
+      - name: Copy static pages
+        run: cp privacy.html dist/public/privacy.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist/public'
-
   deploy:
     environment:
       name: github-pages
