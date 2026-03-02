@@ -5,7 +5,7 @@
  * ============================================================ */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Music, Sparkles } from "lucide-react";
+import { Music, Sparkles, ArrowLeft } from "lucide-react";
 import TrackCard from "@/components/TrackCard";
 import NowPlaying from "@/components/NowPlaying";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
@@ -41,7 +41,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-24">
-      {/* ===== HERO SECTION ===== */}
+      {/* ===== LÚMEN HUB BACK LINK ===== */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2.5"
+           style={{ background: "rgba(5,5,14,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(168,85,247,0.15)" }}>
+        <a href="https://lumen-hub.manus.space" target="_blank" rel="noopener noreferrer"
+           className="flex items-center gap-2 text-xs font-semibold tracking-wider transition-colors hover:text-purple-400"
+           style={{ color: "rgba(168,85,247,0.8)" }}>
+          <ArrowLeft className="w-3.5 h-3.5" />
+          LÚMEN HUB
+        </a>
+        <span className="text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>光 · 一期一会</span>
+      </div>
+      <div className="h-10" />
+
+      {/* ===== HERO SECTION ===== */
       <section className="relative overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
@@ -242,9 +255,14 @@ export default function Home() {
         <img src={EQ_IMG} alt="" className="w-full h-24 sm:h-32 object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <p className="text-xs text-white/20 text-center">
-            Criado com IA · Suno AI · Jukebox IA Multilíngue
-          </p>
+          <div className="text-center">
+            <p className="text-xs text-white/20 mb-1">Criado com IA · Suno AI · Jukebox IA Multilíngue</p>
+            <a href="https://lumen-hub.manus.space" target="_blank" rel="noopener noreferrer"
+               className="text-xs font-semibold tracking-widest transition-colors hover:text-purple-300"
+               style={{ color: "rgba(168,85,247,0.6)" }}>
+              光 LÚMEN HUB →
+            </a>
+          </div>
         </div>
       </section>
 
