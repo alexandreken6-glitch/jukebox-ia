@@ -54,7 +54,7 @@ export default function Home() {
       </div>
       <div className="h-10" />
 
-      {/* ===== HERO SECTION ===== */
+      {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
